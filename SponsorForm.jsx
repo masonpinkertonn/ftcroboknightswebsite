@@ -1,30 +1,37 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { useState } from "react"
+import emailjs from "@emailjs/browser"
 
-const TEAM_EMAIL = "paceroboknights15290@gmail.com";
+const TEAM_EMAIL = "mason.pinkerton28@paceacademy.org";//"paceroboknights15290@gmail.com";
 
 export default function SponsorForm() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const organization = String(data.get("organization") || "");
-    const name = String(data.get("name") || "");
-    const email = String(data.get("email") || "");
-    const interest = String(data.get("interest") || "");
-    const message = String(data.get("message") || "");
-    const subject = `RoboKnights sponsorship inquiry — ${organization}`;
-    const body = [
-      `Organization: ${organization}`,
-      `Contact: ${name}`,
-      `Email: ${email}`,
-      `Partnership interest: ${interest}`,
-      "",
-      message,
-    ].join("\n");
+    const [status, setStatus] = useState("idle");
 
-    window.location.href = `mailto:${TEAM_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  async function handleSubmit(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+
+  setStatus("sending");
+
+  try {
+    await emailjs.sendForm(
+      "service_jwdpldn",
+      "template_pmebgy6",
+      form,
+      {
+        publicKey: "8I553JWYPPCxLSk7V",
+      }
+    );
+
+    setStatus("success");
+    form.reset();
+  } catch (error) {
+    console.error("Failed to send sponsorship inquiry:", error);
+    setStatus("error");
   }
+}
 
   return (
     <form className="sponsor-form" onSubmit={handleSubmit}>
@@ -61,12 +68,27 @@ export default function SponsorForm() {
           required
         />
       </label>
-      <button className="button button-dark" type="submit">
-        Start the conversation <span aria-hidden="true">↗</span>
-      </button>
-      <p className="form-note">
-        Submitting opens a pre-addressed email. This site does not store your information.
-      </p>
+      <button
+  className="button button-dark"
+  type="submit"
+  disabled={status === "sending"}
+>
+  {status === "sending" ? (
+    "Sending..."
+  ) : (
+    <>
+      Start the conversation <span aria-hidden="true">↗</span>
+    </>
+  )}
+</button>
+
+<p className="form-note" aria-live="polite">
+  {status === "success"
+    ? "Thank you! Your sponsorship inquiry has been sent."
+    : status === "error"
+      ? "The message could not be sent. Please try again."
+      : "Your inquiry will be sent directly to the RoboKnights."}
+</p>
     </form>
   );
 }
