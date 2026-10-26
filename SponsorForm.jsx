@@ -38,33 +38,23 @@ export default function SponsorForm() {
       <div className="field-row">
         <label>
           <span>Organization</span>
-          <input name="organization" autoComplete="organization" required />
+          <input name="organization" placeholder="..." autoComplete="organization" required />
         </label>
         <label>
-          <span>Your name</span>
-          <input name="name" autoComplete="name" required />
+          <span>Name</span>
+          <input name="name" placeholder="..." autoComplete="name" required />
         </label>
       </div>
       <label>
         <span>Email</span>
-        <input name="email" type="email" autoComplete="email" required />
-      </label>
-      <label>
-        <span>How would you like to help?</span>
-        <select name="interest" defaultValue="Financial sponsorship" required>
-          <option>Financial sponsorship</option>
-          <option>Materials or equipment</option>
-          <option>Technical mentorship</option>
-          <option>Recruiting or career connection</option>
-          <option>Another partnership</option>
-        </select>
+        <input name="email" type="email" placeholder="..." autoComplete="email" required />
       </label>
       <label>
         <span>Message</span>
         <textarea
           name="message"
           rows={5}
-          placeholder="Tell us about your organization and how you would like to work with the RoboKnights."
+          placeholder="..."
           required
         />
       </label>
@@ -87,7 +77,7 @@ export default function SponsorForm() {
     ? "Thank you! Your sponsorship inquiry has been sent."
     : status === "error"
       ? "The message could not be sent. Please try again."
-      : "Your inquiry will be sent directly to the RoboKnights."}
+      : "All responses are sent directly to the RoboKnights."}
 </p>
     </form>
   );

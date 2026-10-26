@@ -1,3 +1,7 @@
 node_modules/
 dist/
 .DS_Store
+# Source CAD is kept locally; only the optimized web model is published.
+/Small Drive Base.step
+
+/.cad-backups/

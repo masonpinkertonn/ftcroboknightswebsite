@@ -1,0 +1,22 @@
+{
+  "removed_path": [
+    "Small Drive Base",
+    "1201-0043-0002:4"
+  ],
+  "bounds_mm": [
+    [
+      -21.864310705374752,
+      -17.757885185600678,
+      -208.27744025289098
+    ],
+    [
+      21.864310705376187,
+      25.970736225150564,
+      -195.53160671955746
+    ]
+  ],
+  "nearest_other_solid_gap_mm": 122,
+  "solids_before": 2397,
+  "solids_after": 2396,
+  "backup": ".cad-backups/Small Drive Base.before-isolated-removal.step"
+}

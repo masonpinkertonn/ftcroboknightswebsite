@@ -1,0 +1,23 @@
+{
+  "removed": [
+    {
+      "instance": "am-5851_yellow Pollen:3",
+      "definition": "am-5851_yellow Pollen"
+    },
+    {
+      "instance": "am-5851_yellow Pollen:4",
+      "definition": "am-5851_yellow Pollen"
+    },
+    {
+      "instance": "am-5851_yellow Pollen:6",
+      "definition": "am-5851_yellow Pollen"
+    },
+    {
+      "instance": "am-5851_yellow Pollen:2",
+      "definition": "am-5851_yellow Pollen"
+    }
+  ],
+  "solids_before": 2405,
+  "solids_after": 2397,
+  "backup": ".cad-backups/Small Drive Base.original.step"
+}
