@@ -1,8 +1,10 @@
 import roboKnightsLogo from "./roboknightslogo-no-outline.png";
+import polymakerPhoto from "./polymaker-partnership.jpeg";
 import masonPortrait from "./mason.png";
 import jjPortrait from "./JJ-cutout.png";
-import samPortrait from "./Sam-cutout.png";
+import samPortrait from "./Samson-cutout.png";
 import benPortrait from "./Ben-cutout.png";
+import dhanushPortrait from "./Dhanush-cutout.png";
 import { useEffect, useState } from "react";
 import SponsorForm from "./SponsorForm";
 import RobotViewer from "./RobotViewer";
@@ -244,50 +246,74 @@ export default function Home() {
             <h2>Students who build the next version.</h2>
             <div className="roster-grid captain-grid">
               <article className="captain-card">
-                <img className="captain-portrait" src={masonPortrait} alt="Mason Pinkerton" loading="lazy" />
-                <span>01</span>
-                <div className="captain-details" style={{ textAlign: "center" }}>
-                  <h3>Mason Pinkerton</h3>
-                  <p>Team Co-Captain · Head of Code Team · Autonomous Code Lead</p>
-                </div>
-              </article>
-              <article className="captain-card">
                 <img className="captain-portrait" src={benPortrait} alt="Ben Gies" loading="lazy" />
-                <span>02</span>
+                <span>01</span>
                 <div className="captain-details" style={{ textAlign: "center" }}>
                   <h3>Ben Gies</h3>
                   <p>Team Co-Captain · Head of CAD and Mechanics</p>
+                </div>
+              </article>
+              <article className="captain-card">
+                <img className="captain-portrait" src={masonPortrait} alt="Mason Pinkerton" loading="lazy" />
+                <span>02</span>
+                <div className="captain-details" style={{ textAlign: "center" }}>
+                  <h3>Mason Pinkerton</h3>
+                  <p>Team Co-Captain · Head of Code Team · Autonomous Code Lead</p>
                 </div>
               </article>
             </div>
           </div>
         </div>
         <div className="shell roster">
-          <div className="roster-heading">
-            <p className="data-label">TEAM LEADERSHIP</p>
-            <p>Six students, distinct specialties, one competitive system.</p>
-          </div>
           <div className="roster-grid">
-            <article><span>01</span><h3>Dhanush Paladugu</h3><p>Team Co-Captain · Head of Code Team · Autonomous Code Lead</p></article>
-            <article><span>02</span><h3>Ben Rodbell</h3><p>Team Co-Captain · Head of CAD and Mechanics</p></article>
             <article className="portrait-card">
-              <img className="captain-portrait" src={samPortrait} alt="Sam Schoeffler" loading="lazy" />
+              <img className="captain-portrait" src={dhanushPortrait} alt="Dhanush Paladugu" loading="lazy" />
               <span>03</span>
               <div className="portrait-details">
-                <h3>Sam Schoeffler</h3>
-                <p>Head of Forward-Thinking Design · Outreach</p>
+                <h3>Ben Rodbell</h3>
+                <p>Senior Team Mentor · Logistics Coordinator</p>
+              </div>
+            </article>
+            <article className="portrait-card">
+              <img className="captain-portrait" src={dhanushPortrait} alt="Dhanush Paladugu" loading="lazy" />
+              <span>04</span>
+              <div className="portrait-details">
+                <h3>Dhanush Paladugu</h3>
+                <p>Protégé · Team Outreach Coordinator</p>
               </div>
             </article>
             <article className="portrait-card">
               <img className="captain-portrait" src={jjPortrait} alt="JJ Brown" loading="lazy" />
-              <span>04</span>
+              <span>05</span>
               <div className="portrait-details">
                 <h3>JJ Brown</h3>
                 <p>TeleOp Code Lead</p>
               </div>
             </article>
-            <article><span>05</span><h3>Maddie Finn</h3><p>Head of Electrical</p></article>
-            <article><span>06</span><h3>Ryan Sceusi</h3></article>
+            <article className="portrait-card">
+              <img className="captain-portrait" src={samPortrait} alt="Sam Schoeffler" loading="lazy" />
+              <span>06</span>
+              <div className="portrait-details">
+                <h3>Maddie Finn</h3>
+                <p>Electrical Department</p>
+              </div>
+            </article>
+            <article className="portrait-card">
+              <img className="captain-portrait" src={jjPortrait} alt="JJ Brown" loading="lazy" />
+              <span>07</span>
+              <div className="portrait-details">
+                <h3>Ryan Sceusi</h3>
+                <p>Protégé</p>
+              </div>
+            </article>
+            <article className="portrait-card">
+              <img className="captain-portrait" src={samPortrait} alt="Sam Schoeffler" loading="lazy" />
+              <span>08</span>
+              <div className="portrait-details">
+                <h3>Sam Schoeffler</h3>
+                <p>Head of Forward-Thinking Design · Outreach</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -295,7 +321,7 @@ export default function Home() {
       <section className="sponsors section" id="sponsors">
         <div className="shell sponsors-layout">
           <div className="sponsor-photo">
-            <img src="/polymaker-partnership.jpeg" alt="A RoboKnights member holding 3D-printing materials supplied by Polymaker" />
+            <img src={polymakerPhoto} alt="A RoboKnights member holding 3D-printing materials supplied by Polymaker" />
           </div>
           <div className="sponsor-copy">
             <p className="sponsor-status">Proudly supported by</p>

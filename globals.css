@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Rapid Penmanship";
+  src: url("/fonts/rapid-penmanship.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --ink: #05070b;
   --paper: #f6f7f9;
@@ -173,11 +181,29 @@ svg { width: 1.05em; height: 1.05em; fill: none; stroke: currentColor; stroke-li
 .bar-meta { display: flex; align-items: baseline; justify-content: space-between; font-family: var(--font-geist-mono), monospace; }
 .bar-meta span { color: #5f6977; font-size: 10px; letter-spacing: .14em; }
 .bar-meta strong { color: #535c6a; font-size: 24px; letter-spacing: -.04em; }
-.bar-track { height: 26px; position: relative; overflow: hidden; background: #dfe4ec; }
-.bar-track span { display: block; height: 100%; background: #7b8799; }
+.bar-track {
+  --sketch-ink: #65748a;
+  height: 30px;
+  position: relative;
+  background: url("/sketch-bar-outline.svg") center / 100% 100% no-repeat;
+}
+.bar-track span {
+  display: block;
+  position: relative;
+  height: 100%;
+  background: color-mix(in srgb, var(--sketch-ink) 12%, transparent);
+  clip-path: polygon(0 9%, 13% 5%, 28% 10%, 46% 4%, 65% 8%, 82% 3%, 100% 8%, 98% 35%, 100% 62%, 99% 91%, 83% 96%, 64% 90%, 45% 97%, 27% 91%, 12% 95%, 0 89%, 1% 52%);
+}
+.bar-track span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--sketch-ink);
+  mask: url("/sketch-bar-hatching.svg") left center / 76px 100% repeat-x;
+}
 .current-row .bar-meta strong { color: var(--blue); font-size: 42px; }
-.current-row .bar-track { height: 36px; }
-.current-row .bar-track span { background: var(--blue); box-shadow: 0 0 24px rgba(23,91,216,.25); }
+.current-row .bar-track { --sketch-ink: var(--blue); height: 36px; }
+.current-row .bar-track span::before { mask-position: -23px center; }
 .bar-row small { color: #737c89; font-size: 10px; letter-spacing: .06em; }
 .chart-source { position: absolute; z-index: 2; right: 30px; bottom: 24px; margin: 0; color: #697382; font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
 .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2px; gap: 2px; }
@@ -258,6 +284,19 @@ svg { width: 1.05em; height: 1.05em; fill: none; stroke: currentColor; stroke-li
 .league-stats span { position: absolute; right: 20px; bottom: 21px; color: var(--blue); font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
 .league-stat-featured { background: rgba(23, 91, 216, .06); }
 .league-stat-featured dd { color: var(--blue); }
+
+/* Handwritten notes on the lined-paper scorecards. */
+.trajectory-paper,
+.trajectory-paper :is(.data-label, .bar-meta, .chart-source, .league-stats span) {
+  font-family: "Rapid Penmanship", "Segoe Print", "Bradley Hand", cursive;
+}
+.trajectory-paper :is(h3, h4, dd, strong) { font-weight: 700; letter-spacing: -.025em; }
+.trajectory-paper :is(.data-label, .bar-meta span, .bar-row small, .chart-source, dt, .league-stats span) {
+  font-size: 13px;
+  letter-spacing: .025em;
+}
+.trajectory-paper .trajectory-stat p { font-size: 17px; }
+.trajectory-paper .league-scorecard-copy :is(h3, h4) { line-height: 1.2; }
 
 .engineering { background: #000; }
 .light-heading .kicker { color: var(--blue-light); }
@@ -485,13 +524,10 @@ footer { background: #000; }
 .captain-portrait { position: absolute; z-index: -1; top: -52px; left: 0; width: 100%; height: 285px; object-fit: cover; object-position: center top; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%); mask-image: linear-gradient(to bottom, #000 50%, transparent 100%); }
 .captain-grid .captain-details { margin-top: 195px; }
 .captain-grid h3 { margin: 0 0 12px; }
-.roster > .roster-grid { margin-top: 78px; gap: 1px 16px; background: transparent; border: 0; }
+.roster > .roster-grid { margin-top: 78px; gap: 50px 16px; background: transparent; border: 0; }
 .roster-grid .portrait-card { position: relative; isolation: isolate; min-height: 350px; border: 1px solid #2b3039; background: radial-gradient(ellipse at top, #1b2432, #0d1015 70%); }
 .portrait-details { margin-top: 195px; text-align: center; }
 .roster-grid .portrait-details h3 { margin: 0 0 12px; }
-@media (max-width: 960px) {
-  .roster > .roster-grid { row-gap: 68px; }
-}
 @media (max-width: 600px) {
   .captain-grid { grid-template-columns: 1fr; }
 }
